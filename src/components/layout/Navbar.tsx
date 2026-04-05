@@ -13,7 +13,6 @@ const navLinks = [
       { label: 'Schedule', to: '/schedule' },
     ],
   },
-  { label: 'Pricing', to: '/pricing' },
   { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact' },
 ]

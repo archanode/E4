@@ -6,7 +6,6 @@ import Courses from './pages/Courses'
 import CourseDetail from './pages/CourseDetail'
 import Coaching from './pages/Coaching'
 import Schedule from './pages/Schedule'
-import Pricing from './pages/Pricing'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import Register from './pages/Register'
@@ -24,7 +23,6 @@ function App() {
           <Route path="courses/:id" element={<CourseDetail />} />
           <Route path="coaching" element={<Coaching />} />
           <Route path="schedule" element={<Schedule />} />
-          <Route path="pricing" element={<Pricing />} />
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
           <Route path="register" element={<Register />} />
