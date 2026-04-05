@@ -3,7 +3,7 @@ import logo from '../assets/logos/logo.jpeg'
 
 const stats = [
   { value: '500+', label: 'Students Trained' },
-  { value: '15+', label: 'Expert Coaches' },
+  { value: '1-on-1', label: 'Private Lessons' },
   { value: '98%', label: 'Student Satisfaction' },
   { value: '10+', label: 'Years of Excellence' },
 ]
@@ -33,38 +33,6 @@ const courses = [
     lessons: 32,
     icon: '♛',
   },
-  {
-    level: 'Tournament Prep',
-    title: 'Competition Ready',
-    desc: 'Intensive preparation for rated tournaments — psychology, time management, and analysis.',
-    duration: '10 weeks',
-    lessons: 20,
-    icon: '♚',
-  },
-]
-
-const coaches = [
-  {
-    name: 'GM Alexander Petrov',
-    title: 'Grandmaster · Head Coach',
-    rating: 2680,
-    speciality: 'Opening Theory & Middlegame',
-    img: null,
-  },
-  {
-    name: 'IM Sofia Marchetti',
-    title: 'International Master',
-    rating: 2420,
-    speciality: 'Endgame Technique',
-    img: null,
-  },
-  {
-    name: 'FM Daniel Borg',
-    title: 'FIDE Master · Junior Specialist',
-    rating: 2310,
-    speciality: 'Youth Development',
-    img: null,
-  },
 ]
 
 const testimonials = [
@@ -75,7 +43,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: 'The coaching here is world-class. GM Petrov\'s sessions are insightful beyond measure — I understand chess at a completely different level now.',
+    quote: 'The lessons here are world-class. Every session is insightful beyond measure — I understand chess at a completely different level now.',
     name: 'Isabelle Fontaine',
     title: 'Tournament Player · France',
     rating: 5,
@@ -132,7 +100,7 @@ export default function Home() {
               Explore Programs
             </Link>
             <Link to="/coaching" className="btn-outline">
-              Book a Coach
+              Book a Lesson
             </Link>
           </div>
 
@@ -172,8 +140,8 @@ export default function Home() {
             <div className="divider-gold mb-8" style={{ margin: '0 0 2rem 0' }} />
             <p className="text-gold-100/60 font-body leading-relaxed mb-6">
               E4 Chess Academy was founded on the belief that chess is more than a game — it is a discipline that builds
-              focus, strategic thinking, and resilience. Our team of Grandmasters and International Masters brings
-              world-class coaching to students of all ages and levels.
+              focus, strategic thinking, and resilience. Our expert teacher brings
+              world-class instruction to students of all ages and levels.
             </p>
             <p className="text-gold-100/60 font-body leading-relaxed mb-10">
               Whether you're picking up a chess piece for the first time or preparing for your next rated tournament,
@@ -243,41 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── COACHES ─── */}
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="section-label mb-4">Meet the Masters</p>
-            <h2 className="section-title mb-4">Our Coaches</h2>
-            <div className="divider-gold mb-6" />
-            <p className="text-gold-100/50 font-body max-w-2xl mx-auto">
-              Learn from titled players who have competed at the highest levels of the game.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {coaches.map((c) => (
-              <div key={c.name} className="card-luxury p-8 text-center">
-                {/* Avatar placeholder */}
-                <div className="w-24 h-24 mx-auto mb-6 border-2 border-gold-400/30 flex items-center justify-center bg-dark-700">
-                  <span className="text-4xl text-gold-400/40">♞</span>
-                </div>
-                <h3 className="font-serif text-xl font-bold text-gold-100 mb-1">{c.name}</h3>
-                <p className="text-xs text-gold-400 tracking-wide font-body mb-1">{c.title}</p>
-                <p className="text-xs text-gold-100/40 font-body mb-4">{c.speciality}</p>
-                <div className="inline-block border border-gold-400/25 px-4 py-1.5">
-                  <span className="text-xs text-gold-400 font-body">Rating: {c.rating}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link to="/coaches" className="btn-outline">View All Coaches</Link>
-          </div>
-        </div>
-      </section>
-
       {/* ─── WHY E4 ─── */}
       <section className="py-24 px-6 bg-dark-800">
         <div className="max-w-7xl mx-auto">
@@ -288,11 +221,11 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: '♛', title: 'World-Class Coaches', desc: 'Learn directly from Grandmasters and International Masters with decades of competitive experience.' },
+              { icon: '♛', title: 'Expert Instruction', desc: 'Learn directly from a titled player with years of competitive and teaching experience.' },
               { icon: '♟', title: 'Structured Curriculum', desc: 'Every program follows a proven, GM-designed curriculum that builds skills systematically.' },
               { icon: '🏆', title: 'Tournament Pathway', desc: 'We prepare students for competitive play — from local club tournaments to FIDE-rated events.' },
               { icon: '🎯', title: 'Personalised Coaching', desc: 'Individual sessions tailored to your specific strengths, weaknesses, and goals.' },
-              { icon: '💻', title: 'Online & In-Person', desc: 'Flexible learning — attend sessions at our academy or join live from anywhere in the world.' },
+              { icon: '💻', title: 'Online Lessons', desc: 'All lessons are conducted online via video — train from anywhere in the world, on your schedule.' },
               { icon: '📊', title: 'Progress Tracking', desc: 'Monitor your improvement with detailed game analysis, performance reports, and milestone tracking.' },
             ].map((f) => (
               <div key={f.title} className="card-luxury p-7 flex gap-5">

@@ -1,13 +1,13 @@
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 const schedule = [
-  { day: 'Monday', time: '09:00 – 10:30', title: 'Beginners Group', coach: 'FM Daniel Borg', format: 'In-Person', level: 'Beginner', spots: 4 },
-  { day: 'Monday', time: '18:00 – 19:30', title: 'Tactics Workshop', coach: 'IM Carlos Rodrigues', format: 'Online', level: 'Intermediate', spots: 6 },
-  { day: 'Tuesday', time: '19:00 – 20:30', title: 'Advanced Strategy', coach: 'GM Alexander Petrov', format: 'In-Person', level: 'Advanced', spots: 2 },
-  { day: 'Wednesday', time: '09:00 – 10:00', title: 'Endgame Masterclass', coach: 'IM Sofia Marchetti', format: 'Online', level: 'Intermediate', spots: 5 },
-  { day: 'Wednesday', time: '18:30 – 20:00', title: 'Opening Repertoire', coach: 'GM Alexander Petrov', format: 'In-Person', level: 'Advanced', spots: 0 },
-  { day: 'Thursday', time: '10:00 – 11:30', title: 'Beginners Group', coach: 'FM Daniel Borg', format: 'In-Person', level: 'Beginner', spots: 6 },
-  { day: 'Friday', time: '18:00 – 19:30', title: 'Positional Play', coach: 'IM Sofia Marchetti', format: 'In-Person', level: 'Intermediate', spots: 4 },
+  { day: 'Monday', time: '09:00 – 10:30', title: 'Beginners Group', format: 'In-Person', level: 'Beginner', spots: 4 },
+  { day: 'Monday', time: '18:00 – 19:30', title: 'Tactics Workshop', format: 'Online', level: 'Intermediate', spots: 6 },
+  { day: 'Tuesday', time: '19:00 – 20:30', title: 'Advanced Strategy', format: 'In-Person', level: 'Advanced', spots: 2 },
+  { day: 'Wednesday', time: '09:00 – 10:00', title: 'Endgame Masterclass', format: 'Online', level: 'Intermediate', spots: 5 },
+  { day: 'Wednesday', time: '18:30 – 20:00', title: 'Opening Repertoire', format: 'In-Person', level: 'Advanced', spots: 0 },
+  { day: 'Thursday', time: '10:00 – 11:30', title: 'Beginners Group', format: 'In-Person', level: 'Beginner', spots: 6 },
+  { day: 'Friday', time: '18:00 – 19:30', title: 'Positional Play', format: 'In-Person', level: 'Intermediate', spots: 4 },
 ]
 
 const levelColors: Record<string, string> = {
@@ -63,7 +63,6 @@ export default function Schedule() {
                         </span>
                       </div>
                       <h3 className="font-serif text-lg font-bold text-gold-100 mb-1">{s.title}</h3>
-                      <p className="text-xs text-gold-100/50 font-body mb-1">{s.coach}</p>
                       <p className="text-xs text-gold-100/40 font-body mb-4">{s.format}</p>
                       <div className="flex justify-between items-center border-t border-gold-400/10 pt-4">
                         <span className={`text-xs font-body ${s.spots === 0 ? 'text-red-400' : 'text-green-400'}`}>
@@ -93,9 +92,9 @@ export default function Schedule() {
       <section className="py-12 px-6 bg-dark-800 text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-gold-100/50 font-body text-sm mb-4">
-            Private coaching sessions are arranged directly with your assigned coach at mutually convenient times.
+            Private lessons are arranged directly with your teacher at mutually convenient times.
           </p>
-          <a href="/coaching" className="btn-outline text-xs">View Private Coaching</a>
+          <a href="/coaching" className="btn-outline text-xs">View Private Lessons</a>
         </div>
       </section>
     </div>

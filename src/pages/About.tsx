@@ -1,12 +1,5 @@
 import { Link } from 'react-router-dom'
 
-const team = [
-  { name: 'GM Alexander Petrov', role: 'Founder & Head Coach', bio: 'Former World Championship Candidate with over 20 years of coaching experience at the highest level.' },
-  { name: 'IM Sofia Marchetti', role: 'Senior Coach & Curriculum Director', bio: 'Women\'s International Master specialising in endgame technique and structured curriculum development.' },
-  { name: 'FM Daniel Borg', role: 'Junior Coach & Youth Programme Lead', bio: 'FIDE Master passionate about nurturing the next generation of chess champions in Malta and beyond.' },
-  { name: 'Maria Zammit', role: 'Academy Manager', bio: 'Overseeing operations, student relations, and the day-to-day running of the academy with meticulous care.' },
-]
-
 const values = [
   { icon: '♛', title: 'Excellence', desc: 'We hold ourselves to the highest standard in everything — coaching quality, student care, and results.' },
   { icon: '♟', title: 'Integrity', desc: 'Chess teaches honesty. We bring that same integrity to every interaction with our students and families.' },
@@ -36,18 +29,18 @@ export default function About() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <p className="section-label mb-4">How It Started</p>
-            <h2 className="font-serif text-4xl font-bold text-gold-100 mb-6">A Grandmaster's Vision</h2>
+            <h2 className="font-serif text-4xl font-bold text-gold-100 mb-6">A Vision for Chess Excellence</h2>
             <div className="space-y-4 text-gold-100/60 font-body leading-relaxed">
               <p>
-                E4 Chess Academy was founded in 2014 by Grandmaster Alexander Petrov, who believed that structured,
-                high-quality chess education could unlock potential in students far beyond the chessboard.
+                E4 Chess Academy was founded on the belief that structured, high-quality chess education
+                can unlock potential in students far beyond the chessboard.
               </p>
               <p>
-                What began as a small group of dedicated students has grown into a thriving academy serving hundreds
-                of players — from children taking their first steps in chess to competitive adults aiming for titles.
+                What began as a small group of dedicated students has grown into a thriving academy serving
+                players of all ages — from children taking their first steps in chess to competitive adults aiming for titles.
               </p>
               <p>
-                Our approach combines rigorous, GM-designed curricula with personalised mentoring — ensuring every
+                Our approach combines a rigorous, structured curriculum with personalised mentoring — ensuring every
                 student gets the guidance they need to progress at their own pace while being held to the highest standards.
               </p>
             </div>
@@ -75,29 +68,6 @@ export default function About() {
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="font-serif text-xl font-bold text-gold-100 mb-3">{v.title}</h3>
                 <p className="text-sm text-gold-100/50 font-body leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-24 px-6 bg-dark-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="section-label mb-4">The People Behind E4</p>
-            <h2 className="section-title mb-4">Meet Our Team</h2>
-            <div className="divider-gold" />
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((m) => (
-              <div key={m.name} className="card-luxury p-7 text-center">
-                <div className="w-20 h-20 mx-auto mb-5 border border-gold-400/25 flex items-center justify-center bg-dark-700">
-                  <span className="text-3xl text-gold-400/40">♞</span>
-                </div>
-                <h3 className="font-serif text-lg font-bold text-gold-100 mb-1">{m.name}</h3>
-                <p className="text-xs text-gold-400 tracking-wide font-body mb-3">{m.role}</p>
-                <p className="text-sm text-gold-100/50 font-body leading-relaxed">{m.bio}</p>
               </div>
             ))}
           </div>

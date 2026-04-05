@@ -6,8 +6,8 @@ const packages = [
     icon: '♙',
     price: 30,
     per: 'lesson',
-    desc: 'A one-off private lesson with one of our coaches — perfect for trying our teaching style or working on a specific topic.',
-    features: ['60-minute session', 'Any topic of your choice', 'Game analysis included', 'Session recording available'],
+    desc: 'A one-off private lesson — perfect for trying our teaching style or working on a specific topic.',
+    features: ['60-minute session', 'Any topic of your choice', 'Game analysis included', 'Session recording available', 'Progress notes after each session'],
     cta: 'Book a Lesson',
   },
   {
@@ -15,8 +15,8 @@ const packages = [
     icon: '♛',
     price: 120,
     per: 'month',
-    desc: 'Four private lessons per month with a dedicated coach — the fastest way to improve.',
-    features: ['4 × 60-minute lessons', 'Dedicated coach assigned', 'Custom study plan', 'Ongoing game analysis', 'WhatsApp support'],
+    desc: 'Four private lessons per month — the fastest way to improve your game consistently.',
+    features: ['4 × 60-minute lessons', 'Custom study plan', 'Ongoing game analysis', 'Progress notes after each session', 'WhatsApp support'],
     cta: 'Start Monthly',
     featured: true,
   },
@@ -46,12 +46,11 @@ export default function Coaching() {
             <h2 className="section-title mb-4">How It Works</h2>
             <div className="divider-gold" />
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-3 gap-6">
             {[
               { step: '01', title: 'Free Assessment', desc: 'We assess your current level and discuss your goals in a free 30-minute consultation.' },
-              { step: '02', title: 'Coach Match', desc: 'We match you with the ideal coach based on your level, style, and availability.' },
-              { step: '03', title: 'Custom Plan', desc: 'Your coach builds a personalised study plan targeting your specific weaknesses.' },
-              { step: '04', title: 'Start Improving', desc: 'Begin your lessons and track measurable progress with regular game analysis.' },
+              { step: '02', title: 'Custom Plan', desc: 'Your teacher builds a personalised study plan targeting your specific weaknesses and goals.' },
+              { step: '03', title: 'Start Improving', desc: 'Begin your lessons and track measurable progress with regular game analysis and feedback.' },
             ].map((s) => (
               <div key={s.step} className="card-luxury p-8 text-center relative">
                 <div className="font-serif text-5xl font-bold text-gold-400/15 mb-4">{s.step}</div>

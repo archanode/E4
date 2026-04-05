@@ -126,7 +126,7 @@ export default function Contact() {
                       >
                         <option value="">Select a topic...</option>
                         <option>Course Enquiry</option>
-                        <option>Private Coaching</option>
+                        <option>Private Lessons</option>
                         <option>Tournament Registration</option>
                         <option>Junior Programme</option>
                         <option>Pricing & Membership</option>

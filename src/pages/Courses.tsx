@@ -161,7 +161,7 @@ export default function Courses() {
           <h2 className="section-title mb-6">Take Our Free Assessment</h2>
           <div className="divider-gold mb-8" />
           <p className="text-gold-100/55 font-body mb-8 leading-relaxed">
-            Our coaches will evaluate your current level and recommend the perfect program for your goals.
+            Our teacher will evaluate your current level and recommend the perfect program for your goals.
           </p>
           <Link to="/contact" className="btn-primary">Book a Free Assessment</Link>
         </div>
