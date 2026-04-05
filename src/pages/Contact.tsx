@@ -53,16 +53,15 @@ export default function Contact() {
               <div className="flex gap-3">
                 {[
                   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61582035812016' },
-                  { label: 'Instagram', href: '#' },
-                  { label: 'YouTube', href: '#' },
-                  { label: 'Twitter/X', href: '#' },
+                  { label: 'Instagram', href: 'https://www.instagram.com/elenaghitza_chess/' },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/elena-ghitza-483880106/' },
                 ].map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     title={s.label}
-                    target={s.href !== '#' ? '_blank' : undefined}
-                    rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 border border-gold-400/25 flex items-center justify-center text-gold-400/60 hover:text-gold-400 hover:border-gold-400/60 transition-colors text-xs font-body"
                   >
                     {s.label[0]}
