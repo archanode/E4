@@ -77,18 +77,14 @@ export default function Footer() {
           <ul className="space-y-4 text-sm font-body text-gold-100/55">
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <span>123 Academy Street<br />Valletta, Malta VLT 1234</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-gold-400 mt-0.5">✦</span>
               <a href="mailto:info@e4chessacademy.com" className="hover:text-gold-400 transition-colors">
                 info@e4chessacademy.com
               </a>
             </li>
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <a href="tel:+35612345678" className="hover:text-gold-400 transition-colors">
-                +356 1234 5678
+              <a href="tel:+35699672410" className="hover:text-gold-400 transition-colors">
+                +356 99672410
               </a>
             </li>
           </ul>
