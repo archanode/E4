@@ -19,13 +19,20 @@ export default function Footer() {
             Where mastery meets elegance. Elevating chess education through world-class coaching and structured learning.
           </p>
           <div className="flex gap-4">
-            {['facebook', 'instagram', 'youtube', 'twitter'].map((s) => (
+            {[
+              { label: 'facebook', href: 'https://www.facebook.com/profile.php?id=61582035812016' },
+              { label: 'instagram', href: '#' },
+              { label: 'youtube', href: '#' },
+              { label: 'twitter', href: '#' },
+            ].map((s) => (
               <a
-                key={s}
-                href="#"
+                key={s.label}
+                href={s.href}
+                target={s.href !== '#' ? '_blank' : undefined}
+                rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
                 className="w-9 h-9 border border-gold-400/25 flex items-center justify-center text-gold-400/60 hover:text-gold-400 hover:border-gold-400/60 transition-colors"
               >
-                <span className="text-xs uppercase">{s[0]}</span>
+                <span className="text-xs uppercase">{s.label[0]}</span>
               </a>
             ))}
           </div>

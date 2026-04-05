@@ -51,14 +51,21 @@ export default function Contact() {
             <div>
               <p className="text-xs text-gold-400 uppercase tracking-widest font-body mb-4">Follow Us</p>
               <div className="flex gap-3">
-                {['Facebook', 'Instagram', 'YouTube', 'Twitter/X'].map((s) => (
+                {[
+                  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61582035812016' },
+                  { label: 'Instagram', href: '#' },
+                  { label: 'YouTube', href: '#' },
+                  { label: 'Twitter/X', href: '#' },
+                ].map((s) => (
                   <a
-                    key={s}
-                    href="#"
-                    title={s}
+                    key={s.label}
+                    href={s.href}
+                    title={s.label}
+                    target={s.href !== '#' ? '_blank' : undefined}
+                    rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
                     className="w-10 h-10 border border-gold-400/25 flex items-center justify-center text-gold-400/60 hover:text-gold-400 hover:border-gold-400/60 transition-colors text-xs font-body"
                   >
-                    {s[0]}
+                    {s.label[0]}
                   </a>
                 ))}
               </div>
