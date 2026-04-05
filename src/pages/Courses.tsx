@@ -133,11 +133,10 @@ export default function Courses() {
                     </li>
                   ))}
                 </ul>
-                <div className="grid grid-cols-2 gap-3 mb-8 text-xs font-body text-gold-100/50 border-t border-gold-400/10 pt-6">
+                <div className="grid grid-cols-3 gap-3 mb-8 text-xs font-body text-gold-100/50 border-t border-gold-400/10 pt-6">
                   <div><span className="text-gold-400 block mb-1">Duration</span>{c.duration}</div>
                   <div><span className="text-gold-400 block mb-1">Lessons</span>{c.lessons}</div>
                   <div><span className="text-gold-400 block mb-1">Format</span>{c.format}</div>
-                  <div><span className="text-gold-400 block mb-1">Age Group</span>{c.ageGroup}</div>
                 </div>
                 <div className="flex items-center justify-between mt-auto">
                   <div>

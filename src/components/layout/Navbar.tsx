@@ -48,7 +48,8 @@ export default function Navbar() {
           <img
             src={logo}
             alt="E4 Chess Academy"
-            className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-screen"
+            className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            style={{ mixBlendMode: 'lighten' }}
           />
           <div className="hidden sm:block">
             <span className="block font-serif text-xl font-bold gold-gradient leading-none">E4</span>
