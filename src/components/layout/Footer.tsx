@@ -37,8 +37,7 @@ export default function Footer() {
           <ul className="space-y-3">
             {[
               { label: 'All Courses', to: '/courses' },
-              { label: 'Private Coaching', to: '/coaching' },
-              { label: 'Group Sessions', to: '/coaching' },
+              { label: 'Private Lessons', to: '/coaching' },
               { label: 'Online Lessons', to: '/courses' },
               { label: 'Schedule', to: '/schedule' },
             ].map((l) => (

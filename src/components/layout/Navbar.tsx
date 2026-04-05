@@ -9,7 +9,7 @@ const navLinks = [
     label: 'Programs',
     children: [
       { label: 'Courses', to: '/courses' },
-      { label: 'Coaching', to: '/coaching' },
+      { label: 'Private Lessons', to: '/coaching' },
       { label: 'Schedule', to: '/schedule' },
     ],
   },
