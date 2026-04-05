@@ -74,6 +74,65 @@ export default function About() {
         </div>
       </section>
 
+      {/* Teacher */}
+      <section className="py-24 px-6 bg-dark-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="section-label mb-4">Who You'll Learn From</p>
+            <h2 className="section-title mb-4">Meet Your Teacher</h2>
+            <div className="divider-gold" />
+          </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Photo */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="w-72 h-72 md:w-96 md:h-96 border-2 border-gold-400/30 bg-dark-700 flex items-center justify-center">
+                  {/* Replace with real photo: <img src={teacherPhoto} alt="Teacher Name" className="w-full h-full object-cover" /> */}
+                  <span className="text-8xl text-gold-400/20">♞</span>
+                </div>
+                <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold-400/10" />
+                <div className="absolute -top-4 -left-4 w-full h-full border border-gold-400/5" />
+              </div>
+            </div>
+            {/* Bio */}
+            <div>
+              <p className="section-label mb-3">FIDE Master</p>
+              <h3 className="font-serif text-4xl font-bold text-gold-100 mb-2">John Doe</h3>
+              <p className="text-gold-400 font-body tracking-wide mb-6">Founder & Head Teacher · E4 Chess Academy</p>
+              <div className="divider-gold mb-8" style={{ margin: '0 0 2rem 0' }} />
+              <div className="space-y-4 text-gold-100/60 font-body leading-relaxed mb-8">
+                <p>
+                  A FIDE Master with over 15 years of competitive experience at national and international level,
+                  John has represented Malta in multiple Chess Olympiads and holds a peak rating of 2350.
+                </p>
+                <p>
+                  His passion for teaching was sparked early in his career, when he realised that breaking down
+                  complex positions into simple, understandable ideas was a skill he genuinely loved — and excelled at.
+                </p>
+                <p>
+                  John's teaching philosophy is built on clarity, patience, and purpose. Every lesson is designed
+                  around the student's individual needs, ensuring that progress is tangible, measurable, and — above all — enjoyable.
+                </p>
+              </div>
+              {/* Highlights */}
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Peak Rating', value: '2350 FIDE' },
+                  { label: 'Experience', value: '15+ Years' },
+                  { label: 'Students Trained', value: '500+' },
+                  { label: 'Speciality', value: 'Strategy & Endgames' },
+                ].map((s) => (
+                  <div key={s.label} className="border border-gold-400/15 p-4">
+                    <p className="text-xs text-gold-400 uppercase tracking-widest font-body mb-1">{s.label}</p>
+                    <p className="text-sm font-serif font-bold text-gold-100">{s.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <div className="max-w-2xl mx-auto">
