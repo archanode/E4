@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../../assets/logos/logo.jpeg'
+import logo from '../../assets/logos/logo-removebg.png'
 
 export default function Footer() {
   return (
@@ -9,8 +9,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="lg:col-span-1">
           <Link to="/" className="flex items-center gap-3 mb-6">
-            <img src={logo} alt="E4 Chess Academy" className="h-16 w-auto object-contain"
-              style={{ mixBlendMode: 'lighten' }} />
+            <img src={logo} alt="E4 Chess Academy" className="h-16 w-auto object-contain" />
             <div>
               <span className="block font-serif text-2xl font-bold gold-gradient leading-none">E4</span>
               <span className="block text-xs tracking-widest text-gold-400/70 uppercase font-body">Chess Academy</span>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/logos/logo.jpeg'
+import logo from '../assets/logos/logo-removebg.png'
 
 const stats = [
   { value: '500+', label: 'Students Trained' },
@@ -79,7 +79,6 @@ export default function Home() {
               src={logo}
               alt="E4 Chess Academy"
               className="h-40 w-auto object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.3)]"
-              style={{ mixBlendMode: 'lighten' }}
             />
           </div>
 
