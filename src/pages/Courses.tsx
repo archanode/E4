@@ -5,41 +5,68 @@ const courses = [
   {
     id: 'chess-foundations',
     level: 'Beginner',
-    title: 'Chess Foundations',
-    desc: 'Master the rules, basic tactics, and fundamental strategies to begin your chess journey with confidence.',
-    duration: '8 weeks',
-    lessons: 16,
-    price: 120,
+    title: 'Beginners Course',
+    desc: 'Designed for complete beginners or players with very basic knowledge. Students will build a strong foundation in chess, learning the rules, essential patterns, and how to confidently play full games.',
+    duration: '6–8 weeks',
+    lessons: '12 lessons',
+    price: '€120 – €180',
+    priceNote: 'depending on format & group size',
     icon: '♙',
-    format: 'Online & In-Person',
-    ageGroup: 'All Ages',
-    highlights: ['Piece movement & rules', 'Basic tactics: forks, pins, skewers', 'Opening principles', 'Simple endgames'],
+    format: 'Online / Offline',
+    ageGroup: '6+ (kids, teens, adults)',
+    highlights: [
+      'Rules of chess & piece movement',
+      'Check, checkmate, stalemate',
+      'Basic mating patterns (queen, rook, ladder mate)',
+      'Introduction to openings (principles)',
+      'Basic tactics (forks, pins, simple combinations)',
+      'Introduction to planning',
+      'Playing complete games with guidance',
+    ],
   },
   {
     id: 'intermediate-tactics',
     level: 'Intermediate',
-    title: 'Tactical Mastery',
-    desc: 'Sharpen your combinational vision with intensive tactics training, pattern recognition, and positional play.',
-    duration: '12 weeks',
-    lessons: 24,
-    price: 180,
+    title: 'Intermediate Course',
+    desc: 'For players who already know the basics and want to improve their understanding, reduce mistakes, and start thinking strategically.',
+    duration: '8–10 weeks',
+    lessons: '16 lessons',
+    price: '€180 – €280',
+    priceNote: '',
     icon: '♞',
-    format: 'Online & In-Person',
-    ageGroup: 'All Ages',
-    highlights: ['Advanced tactical patterns', 'Positional understanding', 'Pawn structures', 'Middlegame planning'],
+    format: 'Online / Offline / Hybrid',
+    ageGroup: '8+ (kids with basics & adults)',
+    highlights: [
+      'Opening repertoire (for White & Black)',
+      'Tactical patterns (pins, skewers, sacrifices, combinations)',
+      'Calculation basics — how to think during a game',
+      'Middlegame strategy: piece activity, weak squares, planning',
+      'Pawn structures (isolated, doubled, passed pawns)',
+      'Basic endgames (king + pawn, rook endgames)',
+      'Game analysis & mistake correction',
+    ],
   },
   {
     id: 'advanced-strategy',
     level: 'Advanced',
-    title: 'Strategic Excellence',
-    desc: 'Deep dive into advanced strategy, opening repertoire building, and complex endgame technique.',
-    duration: '16 weeks',
-    lessons: 32,
-    price: 280,
+    title: 'Advanced Course',
+    desc: 'Designed for serious players who want to compete, improve their rating, and develop a deep understanding of chess at a strategic and practical level.',
+    duration: '10–12 weeks',
+    lessons: '20 lessons',
+    price: '€300 – €500',
+    priceNote: '',
     icon: '♛',
-    format: 'Online & In-Person',
-    ageGroup: 'Adults',
-    highlights: ['Opening repertoire', 'Complex endgame technique', 'Strategic planning', 'Game annotation & analysis'],
+    format: 'Online / Offline (1-on-1 or small groups)',
+    ageGroup: '10+ (or strong younger players)',
+    highlights: [
+      'Full opening repertoire building',
+      'Deep calculation & candidate moves',
+      'Advanced tactics & combinations',
+      'Middlegame mastery: positional play, imbalances, long-term planning',
+      'Advanced endgames (Lucena, Philidor, minor piece techniques)',
+      'Game analysis including student games',
+      'Tournament preparation & psychology',
+    ],
   },
 ]
 
@@ -114,8 +141,8 @@ export default function Courses() {
                 </div>
                 <div className="flex items-center justify-between mt-auto">
                   <div>
-                    <span className="text-xs text-gold-100/40 font-body">From</span>
-                    <span className="font-serif text-2xl font-bold gold-gradient ml-2">€{c.price}</span>
+                    <span className="font-serif text-xl font-bold gold-gradient">{c.price}</span>
+                    {c.priceNote && <p className="text-xs text-gold-100/35 font-body mt-0.5">{c.priceNote}</p>}
                   </div>
                   <Link to={`/courses/${c.id}`} className="btn-primary text-xs py-2.5 px-5">
                     Enroll
