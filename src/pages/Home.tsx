@@ -78,7 +78,7 @@ export default function Home() {
             <img
               src={logo}
               alt="E4 Chess Academy"
-              className="h-40 w-auto object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.3)]"
+              className="h-40 w-auto object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.3)] mix-blend-screen"
             />
           </div>
 
