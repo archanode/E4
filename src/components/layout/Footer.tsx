@@ -62,7 +62,6 @@ export default function Footer() {
           <ul className="space-y-3">
             {[
               { label: 'About Us', to: '/about' },
-              { label: 'Blog & News', to: '/blog' },
               { label: 'Contact', to: '/contact' },
               { label: 'Student Portal', to: '/portal' },
             ].map((l) => (

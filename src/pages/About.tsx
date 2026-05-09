@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import elenaPhoto from '../../elena.jpg'
 
 const values = [
   { icon: '♛', title: 'Excellence', desc: 'We hold ourselves to the highest standard in everything — coaching quality, student care, and results.' },
@@ -86,9 +87,8 @@ export default function About() {
             {/* Photo */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="w-72 h-72 md:w-96 md:h-96 border-2 border-gold-400/30 bg-dark-700 flex items-center justify-center">
-                  {/* Replace with real photo: <img src={teacherPhoto} alt="Teacher Name" className="w-full h-full object-cover" /> */}
-                  <span className="text-8xl text-gold-400/20">♞</span>
+                <div className="border-2 border-gold-400/30 overflow-hidden">
+                  <img src={elenaPhoto} alt="Elena Ghitza" className="w-72 md:w-96 object-contain" />
                 </div>
                 <div className="absolute -bottom-4 -right-4 w-full h-full border border-gold-400/10" />
                 <div className="absolute -top-4 -left-4 w-full h-full border border-gold-400/5" />
@@ -96,37 +96,26 @@ export default function About() {
             </div>
             {/* Bio */}
             <div>
-              <p className="section-label mb-3">FIDE Master</p>
-              <h3 className="font-serif text-4xl font-bold text-gold-100 mb-2">John Doe</h3>
-              <p className="text-gold-400 font-body tracking-wide mb-6">Founder & Head Teacher · E4 Chess Academy</p>
+              <p className="section-label mb-3">FIDE Instructor · National Chess Arbiter</p>
+              <h3 className="font-serif text-4xl font-bold text-gold-100 mb-2">Elena Ghitza</h3>
+              <p className="text-gold-400 font-body tracking-wide mb-6">Founder & Head Teacher · e4chess Academy</p>
               <div className="divider-gold mb-8" style={{ margin: '0 0 2rem 0' }} />
               <div className="space-y-4 text-gold-100/60 font-body leading-relaxed mb-8">
                 <p>
-                  A FIDE Master with over 15 years of competitive experience at national and international level,
-                  John has represented Malta in multiple Chess Olympiads and holds a peak rating of 2350.
+                  Elena Ghitza is a FIDE Instructor, National Chess Arbiter, and the Founder & Head Teacher of e4chess Academy.
                 </p>
                 <p>
-                  His passion for teaching was sparked early in his career, when he realised that breaking down
-                  complex positions into simple, understandable ideas was a skill he genuinely loved — and excelled at.
+                  With extensive competitive experience at both national and international level, she has proudly represented Malta at the Chess Olympiad in Budapest.
                 </p>
                 <p>
-                  John's teaching philosophy is built on clarity, patience, and purpose. Every lesson is designed
-                  around the student's individual needs, ensuring that progress is tangible, measurable, and — above all — enjoyable.
+                  Her approach to chess education is refined, structured, and deeply human. Drawing on her understanding of both the game and psychology, Elena focuses on developing clarity of thought, strategic vision, and confidence at the board.
                 </p>
-              </div>
-              {/* Highlights */}
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Peak Rating', value: '2350 FIDE' },
-                  { label: 'Experience', value: '15+ Years' },
-                  { label: 'Students Trained', value: '500+' },
-                  { label: 'Speciality', value: 'Strategy & Endgames' },
-                ].map((s) => (
-                  <div key={s.label} className="border border-gold-400/15 p-4">
-                    <p className="text-xs text-gold-400 uppercase tracking-widest font-body mb-1">{s.label}</p>
-                    <p className="text-sm font-serif font-bold text-gold-100">{s.value}</p>
-                  </div>
-                ))}
+                <p>
+                  She believes that true progress begins with genuine enjoyment of the game. By equipping her students with the right tools and understanding, she creates an environment where growth feels natural — and results follow with consistency.
+                </p>
+                <p>
+                  At e4chess Academy, her work is dedicated to shaping not only stronger players, but more thoughtful and resilient minds.
+                </p>
               </div>
             </div>
           </div>
