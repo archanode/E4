@@ -48,7 +48,7 @@ export default function Coaching() {
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
             {[
-              { step: '01', title: 'Free Assessment', desc: 'We assess your current level and discuss your goals in a free 30-minute consultation.' },
+              { step: '01', title: 'Free First Lesson', desc: 'Your first lesson is on us — we get to know your level, discuss your goals, and start playing.' },
               { step: '02', title: 'Custom Plan', desc: 'Your teacher builds a personalised study plan targeting your specific weaknesses and goals.' },
               { step: '03', title: 'Start Improving', desc: 'Begin your lessons and track measurable progress with regular game analysis and feedback.' },
             ].map((s) => (
@@ -131,12 +131,12 @@ export default function Coaching() {
       {/* CTA */}
       <section className="py-20 px-6 bg-dark-800 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="section-title mb-6">Book Your Free Consultation</h2>
+          <h2 className="section-title mb-6">Book Your Free First Lesson</h2>
           <div className="divider-gold mb-8" />
           <p className="text-gold-100/55 font-body mb-8">
-            Not sure where to start? Book a free 30-minute consultation and we'll find the right plan for you.
+            Your first lesson is completely free — no commitment, no pressure. Just chess.
           </p>
-          <Link to="/contact" className="btn-primary">Book Free Consultation</Link>
+          <Link to="/contact" className="btn-primary">Book Free First Lesson</Link>
         </div>
       </section>
     </div>

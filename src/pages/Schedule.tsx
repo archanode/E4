@@ -7,7 +7,6 @@ const schedule = [
   { day: 'Wednesday', time: '09:00 – 10:00', title: 'Endgame Masterclass', format: 'Online', level: 'Intermediate', spots: 5 },
   { day: 'Wednesday', time: '18:30 – 20:00', title: 'Opening Repertoire', format: 'In-Person', level: 'Advanced', spots: 0 },
   { day: 'Thursday', time: '10:00 – 11:30', title: 'Beginners Group', format: 'In-Person', level: 'Beginner', spots: 6 },
-  { day: 'Friday', time: '18:00 – 19:30', title: 'Positional Play', format: 'In-Person', level: 'Intermediate', spots: 4 },
 ]
 
 const levelColors: Record<string, string> = {

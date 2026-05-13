@@ -157,12 +157,12 @@ export default function Courses() {
       <section className="py-20 px-6 bg-dark-800 text-center">
         <div className="max-w-2xl mx-auto">
           <p className="section-label mb-4">Not Sure Where to Start?</p>
-          <h2 className="section-title mb-6">Take Our Free Assessment</h2>
+          <h2 className="section-title mb-6">Book a Free First Lesson</h2>
           <div className="divider-gold mb-8" />
           <p className="text-gold-100/55 font-body mb-8 leading-relaxed">
-            Our teacher will evaluate your current level and recommend the perfect program for your goals.
+            Your first lesson is on us. We'll get to know your level and find the perfect program for your goals.
           </p>
-          <Link to="/contact" className="btn-primary">Book a Free Assessment</Link>
+          <Link to="/contact" className="btn-primary">Book a Free First Lesson</Link>
         </div>
       </section>
     </div>
