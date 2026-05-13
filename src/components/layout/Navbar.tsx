@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import logo from '../../assets/logos/logo-removebg.png'
 
@@ -20,7 +20,21 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const location = useLocation()
+
+  const openDropdown = (label: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setActiveDropdown(label)
+  }
+
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setActiveDropdown(null), 200)
+  }
+
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -62,8 +76,8 @@ export default function Navbar() {
               <li
                 key={link.label}
                 className="relative"
-                onMouseEnter={() => setActiveDropdown(link.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => openDropdown(link.label)}
+                onMouseLeave={scheduleClose}
               >
                 <button className="px-4 py-2 text-sm font-body font-medium text-gold-100/80 hover:text-gold-400 tracking-wide transition-colors flex items-center gap-1">
                   {link.label}
@@ -72,13 +86,17 @@ export default function Navbar() {
                   </svg>
                 </button>
                 {activeDropdown === link.label && (
-                  <ul className="absolute top-full left-0 mt-1 w-48 bg-dark-800 border border-gold-400/20 shadow-xl shadow-black/50 py-2">
+                  <ul
+                    className="absolute top-full left-0 w-56 bg-dark-800 border border-gold-400/20 shadow-xl shadow-black/50 py-2"
+                    onMouseEnter={cancelClose}
+                    onMouseLeave={scheduleClose}
+                  >
                     {link.children.map((child) => (
                       <li key={child.to}>
                         <NavLink
                           to={child.to}
                           className={({ isActive }) =>
-                            `block px-5 py-2.5 text-sm font-body transition-colors ${
+                            `block px-5 py-3 text-sm font-body transition-colors ${
                               isActive
                                 ? 'text-gold-400 bg-gold-400/10'
                                 : 'text-gold-100/80 hover:text-gold-400 hover:bg-gold-400/5'
