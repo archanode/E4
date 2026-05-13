@@ -1,13 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../assets/logos/logo-removebg.png'
 
-const stats = [
-  { value: '500+', label: 'Students Trained' },
-  { value: '1-on-1', label: 'Private Lessons' },
-  { value: '98%', label: 'Student Satisfaction' },
-  { value: '10+', label: 'Years of Excellence' },
-]
-
 const courses = [
   {
     level: 'Beginner',
@@ -91,8 +84,7 @@ export default function Home() {
             <span className="text-gold-100">Academy</span>
           </h1>
           <p className="text-lg md:text-xl text-gold-100/60 font-body font-light max-w-2xl mx-auto leading-relaxed mb-10">
-            Where mastery meets elegance. Premium chess education delivered by
-            Grandmasters and International Masters — shaping champions at every level.
+            Where mastery meets elegance. Premium chess education — shaping champions at every level.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
@@ -116,18 +108,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── STATS ─── */}
-      <section className="bg-dark-800 border-y border-gold-400/15 py-14">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="font-serif text-4xl md:text-5xl font-bold gold-gradient mb-2">{s.value}</div>
-              <div className="text-xs text-gold-100/50 tracking-widest uppercase font-body">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ─── ABOUT SNIPPET ─── */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -140,7 +120,7 @@ export default function Home() {
             <div className="divider-gold mb-8" style={{ margin: '0 0 2rem 0' }} />
             <p className="text-gold-100/60 font-body leading-relaxed mb-6">
               E4 Chess Academy was founded on the belief that chess is more than a game — it is a discipline that builds
-              focus, strategic thinking, and resilience. Our expert teacher brings
+              focus, strategic thinking, and resilience. Our expert teachers bring
               world-class instruction to students of all ages and levels.
             </p>
             <p className="text-gold-100/60 font-body leading-relaxed mb-10">
