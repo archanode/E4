@@ -3,6 +3,10 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
+import { initAnalytics } from './analytics/gtag'
+
+// Consent defaults must be queued before anything else can fire a tag.
+initAnalytics()
 
 const container = document.getElementById('root')!
 const app = (

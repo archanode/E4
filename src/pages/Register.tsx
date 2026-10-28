@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/logos/logo.jpeg'
 import NetlifyFormFields from '../components/forms/NetlifyFormFields'
 import { CONTACT_EMAIL } from '../data/contact'
+import { trackEvent } from '../analytics/gtag'
 import { HONEYPOT_FIELD, submitNetlifyForm, type FormStatus } from '../lib/netlifyForms'
 
 const FORM_NAME = 'enrolment'
@@ -41,7 +42,10 @@ export default function Register() {
       [HONEYPOT_FIELD]: typeof honeypot === 'string' ? honeypot : '',
     })
     setStatus(ok ? 'success' : 'error')
-    if (ok) setStep(4)
+    if (ok) {
+      trackEvent('sign_up', { method: 'enrolment_form' })
+      setStep(4)
+    }
   }
 
   return (

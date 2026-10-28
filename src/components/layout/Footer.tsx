@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logos/logo-removebg.png'
 import NewsletterForm from './NewsletterForm'
+import { openCookieSettings } from '../../analytics/gtag'
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, SOCIAL_LINKS } from '../../data/contact'
 
 export default function Footer() {
@@ -108,6 +109,13 @@ export default function Footer() {
               {l}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors"
+          >
+            Cookie settings
+          </button>
         </div>
       </div>
     </footer>

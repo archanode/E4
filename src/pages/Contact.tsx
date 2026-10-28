@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import NetlifyFormFields from '../components/forms/NetlifyFormFields'
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from '../data/contact'
+import { trackEvent } from '../analytics/gtag'
 import { formFields, submitNetlifyForm, type FormStatus } from '../lib/netlifyForms'
 
 const FORM_NAME = 'contact'
@@ -15,6 +16,7 @@ export default function Contact() {
     // Thank-you state only after Netlify confirms with a 2xx response.
     const ok = await submitNetlifyForm(FORM_NAME, formFields(e.currentTarget))
     setStatus(ok ? 'success' : 'error')
+    if (ok) trackEvent('book_free_lesson')
   }
 
   return (
