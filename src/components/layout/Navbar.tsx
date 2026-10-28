@@ -42,10 +42,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
+  // Close menus whenever the route changes. Adjusting state during render
+  // (instead of in an effect) avoids an extra render pass.
+  const [lastLocationKey, setLastLocationKey] = useState(location.key)
+  if (location.key !== lastLocationKey) {
+    setLastLocationKey(location.key)
     setMenuOpen(false)
     setActiveDropdown(null)
-  }, [location])
+  }
 
   return (
     <header
