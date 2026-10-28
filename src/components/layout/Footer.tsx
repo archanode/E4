@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logos/logo-removebg.png'
+import NewsletterForm from './NewsletterForm'
+import { openCookieSettings } from '../../analytics/gtag'
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, SOCIAL_LINKS } from '../../data/contact'
 
 export default function Footer() {
   return (
@@ -19,11 +22,7 @@ export default function Footer() {
             Where mastery meets elegance. Elevating chess education through world-class coaching and structured learning.
           </p>
           <div className="flex gap-4">
-            {[
-              { label: 'facebook', href: 'https://www.facebook.com/profile.php?id=61582035812016' },
-              { label: 'instagram', href: 'https://www.instagram.com/elenaghitza_chess/' },
-              { label: 'linkedin', href: 'https://www.linkedin.com/in/elena-ghitza-483880106/' },
-            ].map((s) => (
+            {SOCIAL_LINKS.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
@@ -80,30 +79,21 @@ export default function Footer() {
           <ul className="space-y-4 text-sm font-body text-gold-100/55">
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <a href="mailto:info@e4chessacademy.com" className="hover:text-gold-400 transition-colors">
-                info@e4chessacademy.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold-400 transition-colors">
+                {CONTACT_EMAIL}
               </a>
             </li>
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <a href="tel:+35699672410" className="hover:text-gold-400 transition-colors">
-                +356 99672410
+              <a href={`tel:${CONTACT_PHONE_TEL}`} className="hover:text-gold-400 transition-colors">
+                {CONTACT_PHONE_DISPLAY}
               </a>
             </li>
           </ul>
 
           <div className="mt-8">
             <p className="text-xs text-gold-100/40 font-body mb-3 uppercase tracking-widest">Newsletter</p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 bg-dark-800 border border-gold-400/20 px-3 py-2 text-xs text-gold-100/80 placeholder-gold-100/30 focus:outline-none focus:border-gold-400/50 font-body"
-              />
-              <button type="submit" className="px-4 py-2 bg-gold-400 text-dark-900 text-xs font-bold font-body hover:bg-gold-300 transition-colors">
-                →
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
@@ -114,11 +104,22 @@ export default function Footer() {
           © {new Date().getFullYear()} E4 Chess Academy. All rights reserved.
         </p>
         <div className="flex gap-6">
-          {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((l) => (
-            <a key={l} href="#" className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors">
-              {l}
-            </a>
+          {/* Terms of Service link removed until terms exist. */}
+          {[
+            { label: 'Privacy Policy', to: '/privacy' },
+            { label: 'Cookie Policy', to: '/cookies' },
+          ].map((l) => (
+            <Link key={l.to} to={l.to} className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors">
+              {l.label}
+            </Link>
           ))}
+          <button
+            type="button"
+            onClick={openCookieSettings}
+            className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors"
+          >
+            Cookie settings
+          </button>
         </div>
       </div>
     </footer>

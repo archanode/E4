@@ -2,7 +2,33 @@
   command = "npm run build"
   publish = "dist"
 
+# No SPA catch-all: every route is prerendered (scripts/prerender.mjs), so
+# Netlify serves the matching .html file directly, and any unknown path gets
+# dist/404.html with a real 404 status.
+#
+# Trailing slashes: pages are built as <route>.html, so Netlify serves /about
+# and 301-redirects /about/ to /about (no-slash is the canonical form).
+
+# Canonical host: www -> apex, permanent.
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "https://www.e4chess.academy/*"
+  to = "https://e4chess.academy/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.e4chess.academy/*"
+  to = "https://e4chess.academy/:splat"
+  status = 301
+  force = true
+
+# Explicit content types for crawler files.
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"

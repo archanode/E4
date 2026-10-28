@@ -1,12 +1,22 @@
 import { useState } from 'react'
+import NetlifyFormFields from '../components/forms/NetlifyFormFields'
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from '../data/contact'
+import { trackEvent } from '../analytics/gtag'
+import { formFields, submitNetlifyForm, type FormStatus } from '../lib/netlifyForms'
+
+const FORM_NAME = 'contact'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitted(true)
+    setStatus('sending')
+    // Thank-you state only after Netlify confirms with a 2xx response.
+    const ok = await submitNetlifyForm(FORM_NAME, formFields(e.currentTarget))
+    setStatus(ok ? 'success' : 'error')
+    if (ok) trackEvent('book_free_lesson')
   }
 
   return (
@@ -33,8 +43,8 @@ export default function Contact() {
               <p className="section-label mb-6">Find Us</p>
               <div className="space-y-6">
                 {[
-                  { icon: '📞', label: 'Phone', value: '+356 99672410' },
-                  { icon: '✉️', label: 'Email', value: 'info@e4chessacademy.com' },
+                  { icon: '📞', label: 'Phone', value: CONTACT_PHONE_DISPLAY },
+                  { icon: '✉️', label: 'Email', value: CONTACT_EMAIL },
                   { icon: '🕐', label: 'Office Hours', value: 'Mon–Fri: 9:00 – 18:00\nSat: 9:00 – 14:00' },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-4">
@@ -74,7 +84,7 @@ export default function Contact() {
 
           {/* Form */}
           <div className="lg:col-span-2 card-luxury p-10">
-            {submitted ? (
+            {status === 'success' ? (
               <div className="text-center py-16">
                 <div className="text-5xl mb-6">✦</div>
                 <h3 className="font-serif text-2xl font-bold text-gold-100 mb-4">Message Received</h3>
@@ -85,12 +95,21 @@ export default function Contact() {
             ) : (
               <>
                 <h2 className="font-serif text-2xl font-bold text-gold-100 mb-8">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form
+                  name={FORM_NAME}
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  onSubmit={handleSubmit}
+                  className="space-y-5"
+                >
+                  <NetlifyFormFields formName={FORM_NAME} />
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs text-gold-400 uppercase tracking-widest font-body mb-2">Full Name *</label>
                       <input
                         type="text"
+                        name="name"
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -102,6 +121,7 @@ export default function Contact() {
                       <label className="block text-xs text-gold-400 uppercase tracking-widest font-body mb-2">Email *</label>
                       <input
                         type="email"
+                        name="email"
                         required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -116,6 +136,7 @@ export default function Contact() {
                       <label className="block text-xs text-gold-400 uppercase tracking-widest font-body mb-2">Phone</label>
                       <input
                         type="tel"
+                        name="phone"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         className="w-full bg-dark-700 border border-gold-400/20 px-4 py-3 text-sm text-gold-100/80 placeholder-gold-100/25 focus:outline-none focus:border-gold-400/50 font-body transition-colors"
@@ -125,6 +146,7 @@ export default function Contact() {
                     <div>
                       <label className="block text-xs text-gold-400 uppercase tracking-widest font-body mb-2">Subject *</label>
                       <select
+                        name="subject"
                         required
                         value={form.subject}
                         onChange={(e) => setForm({ ...form, subject: e.target.value })}
@@ -144,6 +166,7 @@ export default function Contact() {
                   <div>
                     <label className="block text-xs text-gold-400 uppercase tracking-widest font-body mb-2">Message *</label>
                     <textarea
+                      name="message"
                       required
                       rows={6}
                       value={form.message}
@@ -153,8 +176,19 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary w-full justify-center">
-                    Send Message
+                  {status === 'error' && (
+                    <p role="alert" className="text-sm text-red-400 font-body">
+                      Sorry, your message could not be sent. Please email us at{' '}
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    className="btn-primary w-full justify-center disabled:opacity-60"
+                  >
+                    {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
                 </form>
               </>

@@ -1,6 +1,15 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logos/logo.jpeg'
+import NetlifyFormFields from '../components/forms/NetlifyFormFields'
+import { CONTACT_EMAIL } from '../data/contact'
+import { trackEvent } from '../analytics/gtag'
+import { HONEYPOT_FIELD, submitNetlifyForm, type FormStatus } from '../lib/netlifyForms'
+
+const FORM_NAME = 'enrolment'
+// Every field sent on the final step. Netlify only stores fields that exist in
+// the prerendered HTML, so the hidden definition below lists all of them.
+const ENROLMENT_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'level', 'goals', 'plan', 'agreeTerms'] as const
 
 export default function Register() {
   const [step, setStep] = useState(1)
@@ -9,13 +18,45 @@ export default function Register() {
     level: '', plan: '', goals: '', agreeTerms: false,
   })
 
+  const [status, setStatus] = useState<FormStatus>('idle')
+
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault()
     setStep((s) => s + 1)
   }
 
+  // Final step: send everything gathered across the three steps.
+  const handleComplete = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('sending')
+    const honeypot = new FormData(e.currentTarget).get(HONEYPOT_FIELD)
+    const ok = await submitNetlifyForm(FORM_NAME, {
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      level: form.level,
+      goals: form.goals,
+      plan: form.plan,
+      agreeTerms: form.agreeTerms ? 'yes' : 'no',
+      [HONEYPOT_FIELD]: typeof honeypot === 'string' ? honeypot : '',
+    })
+    setStatus(ok ? 'success' : 'error')
+    if (ok) {
+      trackEvent('sign_up', { method: 'enrolment_form' })
+      setStep(4)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-dark-900 flex items-center justify-center px-6 py-24">
+      {/* Static definition for Netlify's deploy-time form detection; never shown. */}
+      <form name={FORM_NAME} data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <NetlifyFormFields formName={FORM_NAME} />
+        {ENROLMENT_FIELDS.map((field) => (
+          <input key={field} type="hidden" name={field} />
+        ))}
+      </form>
       <div className="w-full max-w-lg">
         {/* Logo */}
         <div className="text-center mb-10">
@@ -110,7 +151,8 @@ export default function Register() {
           )}
 
           {step === 3 && (
-            <form onSubmit={handleNext} className="space-y-5">
+            <form onSubmit={handleComplete} className="space-y-5">
+              <NetlifyFormFields formName={FORM_NAME} />
               <h2 className="font-serif text-xl font-bold text-gold-100 mb-6">Choose Your Plan</h2>
               <div className="space-y-3">
                 {[
@@ -137,16 +179,22 @@ export default function Register() {
                 <input type="checkbox" checked={form.agreeTerms} onChange={(e) => setForm({ ...form, agreeTerms: e.target.checked })}
                   className="mt-1 accent-yellow-400" />
                 <span className="text-xs text-gold-100/50 font-body">
-                  I agree to the <a href="#" className="text-gold-400 hover:underline">Terms of Service</a> and{' '}
-                  <a href="#" className="text-gold-400 hover:underline">Privacy Policy</a>
+                  {/* TODO(owner): restore "Terms of Service" here once terms exist. */}
+                  I have read the <Link to="/privacy" className="text-gold-400 hover:underline">Privacy Policy</Link>
                 </span>
               </label>
               <div className="flex gap-4 mt-4">
                 <button type="button" onClick={() => setStep(2)} className="btn-outline flex-1 justify-center">← Back</button>
-                <button type="submit" disabled={!form.plan || !form.agreeTerms} className="btn-primary flex-1 justify-center disabled:opacity-40">
-                  Complete Enrollment
+                <button type="submit" disabled={!form.plan || !form.agreeTerms || status === 'sending'} className="btn-primary flex-1 justify-center disabled:opacity-40">
+                  {status === 'sending' ? 'Sending…' : 'Complete Enrollment'}
                 </button>
               </div>
+              {status === 'error' && (
+                <p role="alert" className="text-sm text-red-400 font-body">
+                  Sorry, your enrolment could not be sent. Please email us at{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
+                </p>
+              )}
             </form>
           )}
 
