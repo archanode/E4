@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -12,25 +12,25 @@ import Login from './pages/Login'
 import StudentPortal from './pages/StudentPortal'
 import NotFound from './pages/NotFound'
 
-function App() {
+// Route tree only. The router is supplied by main.tsx (BrowserRouter)
+// or entry-server.tsx (StaticRouter) so the same tree renders in both.
+function App(): React.JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="courses" element={<Courses />} />
-          <Route path="courses/:id" element={<CourseDetail />} />
-          <Route path="coaching" element={<Coaching />} />
-          <Route path="schedule" element={<Schedule />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="portal" element={<StudentPortal />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="courses" element={<Courses />} />
+        <Route path="courses/:id" element={<CourseDetail />} />
+        <Route path="coaching" element={<Coaching />} />
+        <Route path="schedule" element={<Schedule />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="portal" element={<StudentPortal />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }
 
