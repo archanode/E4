@@ -3,7 +3,7 @@ import { LegalItem, LegalList, LegalPage, LegalSection } from '../components/leg
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from '../data/contact'
 
 // DRAFT - owner to review before merge. Written from what the site actually
-// does (Netlify hosting, Netlify Forms, Google Fonts, consent-gated Google
+// does (Netlify hosting, Netlify Forms, self-hosted fonts, consent-gated Google
 // Analytics). Items marked TODO need facts only the owner has.
 
 const mail = (
@@ -66,8 +66,8 @@ export default function Privacy(): React.JSX.Element {
               form submissions (contact, enrolment and newsletter) in our Netlify account.
             </LegalItem>
             <LegalItem>
-              <strong className="text-gold-100">Google</strong> provides Google Analytics (only after you accept)
-              and the web fonts used on the site. Loading the fonts sends your IP address to Google.
+              <strong className="text-gold-100">Google</strong> provides Google Analytics, only after you accept.
+              Our web fonts are served from our own website, so loading them sends nothing to Google.
             </LegalItem>
           </LegalList>
         {/* TODO(owner): confirm both providers' data processing terms cover EU transfers (Standard Contractual Clauses). */}
