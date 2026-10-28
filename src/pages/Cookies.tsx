@@ -62,7 +62,7 @@ export default function Cookies(): React.JSX.Element {
 
       <LegalSection heading="Other services">
         <LegalList>
-            <LegalItem>Our web fonts are loaded from Google Fonts. This does not set cookies, but your browser sends your IP address to Google to download them.</LegalItem>
+            <LegalItem>Our web fonts are served from our own website. They set no cookies and involve no third party.</LegalItem>
             <LegalItem>Our host, Netlify, receives standard request data (such as your IP address) to deliver the site.</LegalItem>
           </LegalList>
       </LegalSection>
