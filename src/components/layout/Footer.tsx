@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logos/logo-removebg.png'
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, SOCIAL_LINKS } from '../../data/contact'
 
 export default function Footer() {
   return (
@@ -19,11 +20,7 @@ export default function Footer() {
             Where mastery meets elegance. Elevating chess education through world-class coaching and structured learning.
           </p>
           <div className="flex gap-4">
-            {[
-              { label: 'facebook', href: 'https://www.facebook.com/profile.php?id=61582035812016' },
-              { label: 'instagram', href: 'https://www.instagram.com/elenaghitza_chess/' },
-              { label: 'linkedin', href: 'https://www.linkedin.com/in/elena-ghitza-483880106/' },
-            ].map((s) => (
+            {SOCIAL_LINKS.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
@@ -80,14 +77,14 @@ export default function Footer() {
           <ul className="space-y-4 text-sm font-body text-gold-100/55">
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <a href="mailto:info@e4chessacademy.com" className="hover:text-gold-400 transition-colors">
-                info@e4chessacademy.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold-400 transition-colors">
+                {CONTACT_EMAIL}
               </a>
             </li>
             <li className="flex gap-3">
               <span className="text-gold-400 mt-0.5">✦</span>
-              <a href="tel:+35699672410" className="hover:text-gold-400 transition-colors">
-                +356 99672410
+              <a href={`tel:${CONTACT_PHONE_TEL}`} className="hover:text-gold-400 transition-colors">
+                {CONTACT_PHONE_DISPLAY}
               </a>
             </li>
           </ul>

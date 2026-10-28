@@ -1,6 +1,7 @@
 // The ONE list of prerendered routes. The prerender script renders each entry
 // to static HTML and builds sitemap.xml from the entries with sitemap: true.
 import { courses, type Course } from '../data/courses'
+import { courseJsonLd, organizationJsonLd } from './structuredData'
 
 export interface RouteMeta {
   path: string
@@ -34,6 +35,7 @@ function courseRoute(course: Course): RouteMeta {
     description: courseDescriptions[course.id],
     ogType: 'website',
     sitemap: true,
+    jsonLd: [courseJsonLd(course)],
   }
 }
 
@@ -45,6 +47,7 @@ export const routes: RouteMeta[] = [
       'E4 Chess Academy offers premium chess education in Malta and online: structured courses and private lessons for every level. Book a free first lesson today.',
     ogType: 'website',
     sitemap: true,
+    jsonLd: [organizationJsonLd()],
   },
   {
     path: '/about',
