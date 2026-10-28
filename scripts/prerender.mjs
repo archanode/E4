@@ -1,7 +1,7 @@
 // Postbuild step: renders every route in src/seo/routes.ts to static HTML.
 //
 // Input:  dist/index.html (client build template) + dist-ssr/entry-server.js
-// Output: dist/index.html, dist/<route>.html, dist/404.html
+// Output: dist/index.html, dist/<route>.html, dist/404.html, dist/sitemap.xml
 //
 // Files are written as <route>.html (not <route>/index.html) because Netlify
 // serves about.html at /about and 301-redirects /about/ to /about, which gives
@@ -15,7 +15,7 @@ const distDir = join(root, 'dist')
 const ssrDir = join(root, 'dist-ssr')
 
 const server = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href)
-const { render, renderHeadTags, routes, notFoundRoute } = server
+const { render, renderHeadTags, routes, notFoundRoute, canonicalUrl } = server
 
 const template = readFileSync(join(distDir, 'index.html'), 'utf-8')
 const HEAD_BLOCK = /<!--app-head-->[\s\S]*?<!--\/app-head-->/
@@ -65,5 +65,20 @@ for (const meta of routes) {
 // Any URL the router does not know renders NotFound; Netlify serves this with status 404.
 writeFileSync(join(distDir, '404.html'), renderPage(notFoundRoute, '/this-page-does-not-exist'))
 console.log('prerendered 404 -> dist/404.html')
+
+// Sitemap from the same route list: public (indexable) routes only.
+const buildDate = new Date().toISOString().slice(0, 10)
+const urls = routes
+  .filter((r) => r.sitemap && !r.noindex)
+  .map((r) => `  <url>\n    <loc>${canonicalUrl(r.path)}</loc>\n    <lastmod>${buildDate}</lastmod>\n  </url>`)
+const sitemap = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...urls,
+  '</urlset>',
+  '',
+].join('\n')
+writeFileSync(join(distDir, 'sitemap.xml'), sitemap)
+console.log(`wrote dist/sitemap.xml (${urls.length} urls)`)
 
 rmSync(ssrDir, { recursive: true, force: true })
