@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import StudentPortal from './pages/StudentPortal'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="portal" element={<StudentPortal />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
