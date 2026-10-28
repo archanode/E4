@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logos/logo-removebg.png'
+import NewsletterForm from './NewsletterForm'
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL, SOCIAL_LINKS } from '../../data/contact'
 
 export default function Footer() {
@@ -91,16 +92,7 @@ export default function Footer() {
 
           <div className="mt-8">
             <p className="text-xs text-gold-100/40 font-body mb-3 uppercase tracking-widest">Newsletter</p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 bg-dark-800 border border-gold-400/20 px-3 py-2 text-xs text-gold-100/80 placeholder-gold-100/30 focus:outline-none focus:border-gold-400/50 font-body"
-              />
-              <button type="submit" className="px-4 py-2 bg-gold-400 text-dark-900 text-xs font-bold font-body hover:bg-gold-300 transition-colors">
-                →
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
