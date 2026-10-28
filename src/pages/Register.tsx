@@ -179,8 +179,8 @@ export default function Register() {
                 <input type="checkbox" checked={form.agreeTerms} onChange={(e) => setForm({ ...form, agreeTerms: e.target.checked })}
                   className="mt-1 accent-yellow-400" />
                 <span className="text-xs text-gold-100/50 font-body">
-                  I agree to the <a href="#" className="text-gold-400 hover:underline">Terms of Service</a> and{' '}
-                  <a href="#" className="text-gold-400 hover:underline">Privacy Policy</a>
+                  {/* TODO(owner): restore "Terms of Service" here once terms exist. */}
+                  I have read the <Link to="/privacy" className="text-gold-400 hover:underline">Privacy Policy</Link>
                 </span>
               </label>
               <div className="flex gap-4 mt-4">

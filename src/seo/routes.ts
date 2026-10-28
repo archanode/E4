@@ -91,6 +91,22 @@ export const routes: RouteMeta[] = [
     sitemap: true,
   },
   {
+    path: '/privacy',
+    title: `Privacy Policy${SUFFIX}`,
+    description:
+      'How E4 Chess Academy collects, uses and protects your personal data: website hosting, contact and enrolment forms, analytics with consent, and your GDPR rights.',
+    ogType: 'website',
+    sitemap: true,
+  },
+  {
+    path: '/cookies',
+    title: `Cookie Policy${SUFFIX}`,
+    description:
+      'Which cookies E4 Chess Academy uses, why Google Analytics cookies are set only after you accept, how long they last and how to change your cookie settings.',
+    ogType: 'website',
+    sitemap: true,
+  },
+  {
     path: '/login',
     title: `Sign In${SUFFIX}`,
     description:

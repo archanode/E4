@@ -11,6 +11,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import StudentPortal from './pages/StudentPortal'
 import NotFound from './pages/NotFound'
+import Privacy from './pages/Privacy'
+import Cookies from './pages/Cookies'
 
 // Route tree only. The router is supplied by main.tsx (BrowserRouter)
 // or entry-server.tsx (StaticRouter) so the same tree renders in both.
@@ -28,6 +30,8 @@ function App(): React.JSX.Element {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="portal" element={<StudentPortal />} />
+        <Route path="privacy" element={<Privacy />} />
+        <Route path="cookies" element={<Cookies />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

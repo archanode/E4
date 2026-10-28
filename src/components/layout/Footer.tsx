@@ -104,10 +104,14 @@ export default function Footer() {
           © {new Date().getFullYear()} E4 Chess Academy. All rights reserved.
         </p>
         <div className="flex gap-6">
-          {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((l) => (
-            <a key={l} href="#" className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors">
-              {l}
-            </a>
+          {/* Terms of Service link removed until terms exist. */}
+          {[
+            { label: 'Privacy Policy', to: '/privacy' },
+            { label: 'Cookie Policy', to: '/cookies' },
+          ].map((l) => (
+            <Link key={l.to} to={l.to} className="text-xs text-gold-100/30 hover:text-gold-400 font-body transition-colors">
+              {l.label}
+            </Link>
           ))}
           <button
             type="button"
